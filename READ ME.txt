@@ -1,0 +1,75 @@
+List of MATLAB codes for study and development of ICOT model
+
+- contrail.m: function - evaluates the geometric optical depth for a single contrail
+	Inputs:
+		-t: time vector
+		-t0: initial time
+		-tl: life expectancy of contrail
+		-x: longitudinal vector
+		-x0: initial longitudinal distance
+		-y: lateral vector
+		-y0: initial lateral distance
+		-sigma_x: longitudinal dispersion
+		-sigma_y: lateral dispersion
+		-tau_max: maximum optical depth
+	Output:
+		-tau: contrail optical depth
+
+- contrail_multiple_flights.m: script - returns ICOT time-profiles depending on the number of flights used. Modify value of Nf on line 25 to change the number of flights considered. All trajectories are randomly generated. 
+
+- contrail_oblique_trajectory.m: script - returns a dynamic optical depth time profile and a dynamic visualization of contrails based on an arbitrary angle. Modify values of y1 (line 23) and y2 (line 26) to change angle.
+
+- contrail_single_trajectory_final.m: script - returns visualization and ICTO time-profiles for an horizontal contrail
+
+- discrete.mat: data - contains optical depth vectors obtained for 5 different values of longitudinal dispersion (100, 500, 1000, 5000, 10000)
+
+- final_flight_results.m: script - reads "discrete.mat" and "flights.mat" to return comparative ICOt time-profile grpahs
+
+- flights.mat: data - contains accumulated optical depths and flight trajectories for 4 different sets of flights: 2 flights, 5 flights, 10 flights and 50 flights. In each case, trajectories were generated randomly.
+
+- randomize_trajectory.m: function - generate a random flight trajectory. Area considered is a [x_max-x_min]x[y_max-y_min] rectangle.
+	Inputs:
+		-x_min: minimum horizontal length of the considered rectangle
+		-x_max: maximum horizontal length of the considered rectangle
+		-y_min: minimum vertical length of the considered rectangle
+		-y_max: maximum vertical length of the considered rectangle
+		-t_min: minimum of the allowed time window
+		-t_max: maximum of the allowed time window
+		-direction: either 'WE' (West to East) or 'EW' (East to West) to define general orientation of the trajectory, is assumed to be 'WE' if unprovided
+		-speed: airspeed of the aircraft, assumed to be 0.29 m/s (Mach 0.85) if unprovided
+	Output:
+		-traj: a 2x3 vector containing the x-entry point, the y-entry point and the entry time in the first row; and the x-exit point, y-exit point and the exit time in the second row. 
+
+- single_flight_optical_depth.m: function - returns the optical depth for a single flight integrated over the rectangle [x_max-x_min]x[y_max-y_min]
+	Inputs:
+		-x: longitudinal vector
+		-x_min: minimum horizontal length of the considered rectangle
+		-x_max: maximum horizontal length of the considered rectangle
+		-y: lateral vector
+		-y_min: minimum vertical length of the considered rectangle
+		-y_max: maximum vertical length of the considered rectangle
+		-t0: initial time of reference
+		-tl: contrail life expectancy
+		-t: time vector
+		-tau_max: maximum optical depth
+		-sigma_x: longitudinal dispersion
+		-sigma_y: lateral dispersion
+	Output:
+		-tau: integral optical depth
+
+- trajectory.m: function - provides a linear trajectory between two cartesian points and converts dispersions from their relative cartesian coordinates to the global cartesian coordinates 
+	Inputs:
+		-x1: x-entry point in global coordinates
+		-y1: y-entry point in global coordinates
+		-t1: entry time
+		-x2: x-exit point in global coordinates
+		-y2: y-exit point in global coordinates
+		-t2: exit time
+		-sx: longitudinal dispersion in the relative cartesian coordinates
+		-sy: lateral dispersion in the relative cartesian coordinates
+	Output:
+		-x: horizontal vector
+		-y: vertical vector
+		-t: time vector
+		-sigma_x: longitudinal dispersion converted into global coordinates
+		-sigma_y: lateral dispersion converted into global coordinates
