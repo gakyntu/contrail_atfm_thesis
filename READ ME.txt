@@ -1,0 +1,5 @@
+List of MATLAB Codes and Data for the ATFM application of the derived SAC
+
+-d_current_FRA.csv: data - spreadsheet containing the demand data from the RAC, in free route routing.
+
+-final_results.m: script - cleans the RAC data, displays the demand per flight level histogram, evaluates the number of flights concerned by contrail formation and persistence as per the derived SAC, and converts those results into additional time and fuel generated for a flight level change of 60 flight levels. 
