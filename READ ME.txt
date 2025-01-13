@@ -1,0 +1,84 @@
+List of MATLAB Codes for the derivation of the SAC
+
+-COLI_Nov_2016.xlsx: data - spreadsheet containing the data from the Contrail Library CoLi
+
+-contrail_interval.m: function - returns the altitude boundaries for contrail by applying the ITU-based G* model
+	Inputs:
+		-lat: latitude
+		-N: number of days (January 1 is N=1)
+	Outputs:
+		-z_low: lowest boundary for contrail formation (in Flight Levels)
+		-z_high: highest boundary for contrail formation (in Flight Levels)
+		-status: identified ITU case
+
+-cubic_solve.m: function - finds the cubic polynomial between two points
+	Inputs:
+		-t_in: start abscissa 
+		-t_out: end abscissa
+		-x_in: start ordinate
+		-x_out: end ordinate
+		-dx_in: tangent slope at start point
+		-dx_out: tangent slope at end point
+	Outputs:
+		-a: coefficient for the third degree term of the resulting polynomial (t^3)
+		-b: coefficient for the second degree term of the resulting polynomial (t^2)
+		-c: coefficient for the first degree term of the resulting polynomial (t^1)
+		-d: coefficient for the constant term of the resulting polynomial (t^0)
+
+-G_star_B747.m: script - returns the results for G* application onto the scenario described in Schumann 1996
+
+-G_star_profile.m: function - returns G* value for known latitude, date and altitude
+	Inputs:
+		-phi: latitude in degrees
+		-N: number of days (January 01 is N=1)
+		-z: altitude in Flight Levels (feet/100)
+	Outputs:
+		-G_star: calculated G* value
+
+-G_star_standard_atmosphere.m: function - returns G* value depending on altitude and identified model
+	Inputs:
+		-z: altitude in Flight Levels (feet/100)
+		-status: is either 'ISA', 'High-Latitude Summer', 'High-Latitude Winter', 'Mid-Latitude Summer', 'Mid-Latitude Winter', 'Low-Latitude Annual' depending on desired model
+	Output:
+		-G: calculated G* value
+
+-mixing_line.m: script - all-purpose script used to build the G* general functions. Caculates the numerical profiles of G*, the fitted functions of G* and the shape morphing function.
+
+-pressure_standard_atmosphere.m: function - returns atmospheric pressure depending on altitude and identified model
+	Inputs:
+		-z: altitude in km
+		-status: is either 'ISA', 'High-Latitude Summer', 'High-Latitude Winter', 'Mid-Latitude Summer', 'Mid-Latitude Winter', 'Low-Latitude Annual' depending on desired model
+	Output:
+		-p: calculated pressure in Pa
+
+-roots_poly3.m: function - returns the roots of a third degree polynomial.
+	Inputs:
+		-a: coefficient for the third degree term of the resulting polynomial (t^3)
+		-b: coefficient for the second degree term of the resulting polynomial (t^2)
+		-c: coefficient for the first degree term of the resulting polynomial (t^1)
+		-d: coefficient for the constant term of the resulting polynomial (t^0)
+	Outputs:
+		-z1: first root of the polynomial
+		-z2: second root of the polynomial
+		-z3: third root of the polynomial
+
+-SAC.m: script - returns the graphical depiction of the Schmidt-Applemann Criterion
+
+-standard_atmospheres.m: script - returns comparison graphs between all standard atmosphere cases for the following variables: temperature, pressure, relative humidity, relative humidity over ice, water vapour pressure, pressure-temperature diagram for the Sonntag equations, pressure-altitude diagram for the Sonntag equations, and numerical profiles of G*.
+
+-temperature_standard_atmosphere.m: function - returns atmospheric temperature depending on altitude and identified model
+	Inputs:
+		-z: altitude in km
+		-status: is either 'ISA', 'High-Latitude Summer', 'High-Latitude Winter', 'Mid-Latitude Summer', 'Mid-Latitude Winter', 'Low-Latitude Annual' depending on desired model
+	Output:
+		-T: calculated temperature in K
+
+-validation.m: script - cleans the CoLi spreadsheet, compares it to the G* values and returns accuracy of the comparison, as both prompts and pie charts
+
+
+-vapour_density_standard_atmosphere.m: function - returns atmospheric temperature depending on altitude and identified model
+	Inputs:
+		-z: altitude in km
+		-status: is either 'ISA', 'High-Latitude Summer', 'High-Latitude Winter', 'Mid-Latitude Summer', 'Mid-Latitude Winter', 'Low-Latitude Annual' depending on desired model
+	Output:
+		-rho: calculated vapour density
